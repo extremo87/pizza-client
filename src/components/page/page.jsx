@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../header/header';
+import PropTypes from 'prop-types';
 
 
 const Page = ({children}) => {
@@ -12,6 +13,10 @@ const Page = ({children}) => {
       </div>
     </React.Fragment>
   );
+};
+
+Page.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export default Page;

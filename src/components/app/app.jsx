@@ -5,6 +5,10 @@ import Checkout from '../checkout/checkout';
 import Cart from '../cart/cart';
 import Page from '../page/page';
 import history from '../../history';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
+import {Operation as DataOperation} from '../../reducers/data/data';
 
 
 class App extends React.PureComponent {
@@ -13,6 +17,9 @@ class App extends React.PureComponent {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.loadProducts();
+  }
 
   render() {
 
@@ -43,5 +50,18 @@ class App extends React.PureComponent {
   }
 }
 
+App.propTypes = {
+  loadProducts: PropTypes.func.isRequired,
+};
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+
+  loadProducts() {
+    dispatch(DataOperation.loadProducts());
+  },
+
+});
+
+
+export {App};
+export default connect(null, mapDispatchToProps)(App);
