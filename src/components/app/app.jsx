@@ -19,6 +19,7 @@ class App extends React.PureComponent {
 
   componentDidMount() {
     this.props.loadProducts();
+    this.props.loadCurrencies();
   }
 
   render() {
@@ -52,12 +53,16 @@ class App extends React.PureComponent {
 
 App.propTypes = {
   loadProducts: PropTypes.func.isRequired,
+  loadCurrencies: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
 
   loadProducts() {
     dispatch(DataOperation.loadProducts());
+  },
+  loadCurrencies() {
+    dispatch(DataOperation.loadCurrencies());
   },
 
 });

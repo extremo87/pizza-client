@@ -1,66 +1,37 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {getCart} from "../../reducers/cart/selectors";
+import {getTotalCart, getCartItemsCount} from '../../utils/utils';
+import CartItem from '../cart-item/cart-item';
+import {DELIVERY_FEE} from '../../config/config';
 
 
 class Cart extends React.PureComponent {
 
   render() {
+    const {cart} = this.props;
+    const totalCount = getCartItemsCount(cart);
+    const totalSum = getTotalCart(cart);
+
     return (
-      <div className="col-md-8 order-md-2 mb-4">
+      <div>
         <h4 className="d-flex justify-content-between align-items-center mb-3">
           <span className="text-muted">Your cart</span>
-          <span className="badge badge-secondary badge-pill">3</span>
+          <span className="badge badge-secondary badge-pill">{totalCount}</span>
         </h4>
-        <ul className="list-group mb-3">
-          <li className="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 className="my-0">Product name</h6>
-              <small className="text-muted">Brief description</small>
-            </div>
-            <div className="col-mb-2">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">+</button>
-                </div>
-                <div className="custom-file" style={{width: `40px`}}>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="input-group-append">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">-</button>
-                </div>
-              </div>
-            </div>
-            <span className="text-muted">$12</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 className="my-0">Second product</h6>
-              <small className="text-muted">Brief description</small>
-            </div>
-            <div className="col-mb-2">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">+</button>
-                </div>
-                <div className="custom-file" style={{width: `40px`}}>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="input-group-append">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">-</button>
-                </div>
-              </div>
-            </div>
-            <span className="text-muted">$8</span>
-          </li>
+        <ul className="list-group list-group-flush">
+          { Object.keys(cart).map((key) => cart[key]).map((product) => <CartItem key={product.id} product={product} />)}
 
           <li className="list-group-item d-flex justify-content-between bg-light">
             <div className="text-success">
               <h6 className="my-0">Delivery fee</h6>
             </div>
-            <span className="text-success">$5</span>
+            <span className="text-success">${DELIVERY_FEE.toFixed(2)}</span>
           </li>
           <li className="list-group-item d-flex justify-content-between">
             <span>Total (USD)</span>
-            <strong>$20</strong>
+            <strong>{totalSum.toFixed(2)}</strong>
           </li>
         </ul>
         <hr className="mb-4" />
@@ -72,5 +43,16 @@ class Cart extends React.PureComponent {
   }
 }
 
+Cart.propTypes = {
+  cart: PropTypes.object.isRequired
 
-export default Cart;
+};
+
+const mapStateToProps = (state) => ({
+  cart: getCart(state),
+});
+
+
+export {Cart};
+export default connect(mapStateToProps, null)(Cart);
+
