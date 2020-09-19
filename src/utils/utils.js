@@ -23,12 +23,10 @@ export const recalculateProducts = (products, rate) => {
 };
 
 export const recalculateCart = (cart, rate) => {
-  const keys = Object.keys(cart);
-  if (cart.lenght) {
-    return 0;
-  }
-  return keys.map((key) => {
-    cart[key].price = Math.ceil(cart[key].price * rate);
-    return cart[key];
+  const cartObject = Object.entries(cart);
+  cartObject.forEach((item) => {
+    item[1].price = Math.round(item[1].price * rate);
   });
+
+  return Object.fromEntries(cartObject);
 };

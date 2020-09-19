@@ -47,18 +47,11 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SET_CURRENCY:
 
-      const cart = {...state.cart};
       const products = {...state.products};
       const currencies = {...state.currencies};
       const newCurrency = currencies[action.payload];
       const rate = newCurrency.rates[state.currency].rate;
-
-      console.log(products, Array.isArray(products))
       const updatedProducts = recalculateProducts(products, rate);
-      const updatedCart = recalculateCart(cart, rate)
-
-      CartAcrionCreator.replaceCart(updatedCart);
-
 
       return {...state, currency: action.payload, products: updatedProducts};
 

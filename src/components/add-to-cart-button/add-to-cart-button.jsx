@@ -16,28 +16,31 @@ class AddToCartButton extends React.PureComponent {
     this.handleDecrement = this.handleDecrement.bind(this);
   }
 
+
   handleAddToCart() {
     this.props.addToCart(this.props.product);
   }
+
 
   handleIncrement() {
     this.props.increment(this.props.product);
   }
 
+
   handleDecrement() {
     this.props.decrement(this.props.product);
   }
 
+
   getCart() {
     const {cart, product} = this.props;
+    console.log(cart[product.id]);
     return (cart[product.id]) ? cart[product.id] : false;
   }
 
   render() {
 
     const cartProduct = this.getCart();
-
-
     if (cartProduct) {
       return (
         <div className="col-mb-2">
