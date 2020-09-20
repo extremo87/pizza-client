@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch, Route, Router} from "react-router-dom";
 import Main from '../main/main';
+import SuccessPage from '../success-page/success-page';
 import Checkout from '../checkout/checkout';
 import Cart from '../cart/cart';
 import Page from '../page/page';
@@ -43,6 +44,12 @@ class App extends React.PureComponent {
           <Route exact path="/checkout">
             <Page>
               <Checkout />
+            </Page>
+          </Route>
+
+          <Route exact path="/success/:id">
+            <Page>
+              <SuccessPage />
             </Page>
           </Route>
 
