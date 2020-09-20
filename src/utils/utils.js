@@ -34,3 +34,9 @@ export const recalculateCart = (cart, rate) => {
 export const convertCurrency = (value, rate) => {
   return Math.round(value * rate);
 };
+
+export const isValidPhone = (value) => {
+  const regExp = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11,14}(\s*)?$/i;
+  return regExp.test(value);
+};
+
