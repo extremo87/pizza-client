@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductType from '../../types/types';
+import {ProductType} from '../../types/types';
 import PropTypes from 'prop-types';
 import AddToCartButton from '../add-to-cart-button/add-to-cart-button';
 

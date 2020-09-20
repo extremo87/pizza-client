@@ -12,3 +12,12 @@ export const getCurrencies = (state) => {
   return state[NameSpace.DATA].currencies;
 };
 
+export const getFullCurrency = (state) => {
+  return state[NameSpace.DATA].currencies[state[NameSpace.DATA].currency];
+};
+
+export const getDeliveryFee = (state) => {
+  return state[NameSpace.DATA].deliveryFee;
+};
+
+

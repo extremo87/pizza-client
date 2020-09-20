@@ -30,3 +30,7 @@ export const recalculateCart = (cart, rate) => {
 
   return Object.fromEntries(cartObject);
 };
+
+export const convertCurrency = (value, rate) => {
+  return Math.round(value * rate);
+};

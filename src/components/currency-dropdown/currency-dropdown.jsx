@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Spinner from '../spinner/spinner';
 import {ActionCreator} from '../../reducers/data/data';
 import {ActionCreator as CartActionCreator} from '../../reducers/cart/cart';
+import NameSpace from "../../reducers/name-space";
 
 
 class CurrencyDropdown extends React.PureComponent {
@@ -75,18 +76,16 @@ const mapStateToProps = (state) => ({
 
 const updateCart = (currency) => {
   return (dispatch, getState) => {
-    const currencies = getState().DATA.currencies;
-    const currentCurrency = getState().DATA.currency;
-    
+    const currencies = getState()[NameSpace.DATA].currencies;
+    const currentCurrency = getState()[NameSpace.DATA].currency;
     const newCurrency = currencies[currency];
-    console.log(newCurrency, currentCurrency);
     const rate = newCurrency.rates[currentCurrency].rate;
     dispatch(CartActionCreator.replaceCart(rate));
+    dispatch(ActionCreator.setDeliveryFee(rate));
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-
   changeCurrency(currency) {
     dispatch(updateCart(currency));
     dispatch(ActionCreator.setCurrency(currency));

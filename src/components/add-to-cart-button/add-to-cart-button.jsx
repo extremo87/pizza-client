@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductType from '../../types/types';
+import {ProductType} from '../../types/types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducers/cart/cart';
 import {getCart} from "../../reducers/cart/selectors";
@@ -34,7 +34,6 @@ class AddToCartButton extends React.PureComponent {
 
   getCart() {
     const {cart, product} = this.props;
-    console.log(cart[product.id]);
     return (cart[product.id]) ? cart[product.id] : false;
   }
 

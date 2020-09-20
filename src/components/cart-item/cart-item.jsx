@@ -1,10 +1,10 @@
 import React from 'react';
-import ProductType from '../../types/types';
+import {ProductType} from '../../types/types';
 import AddToCartButton from '../add-to-cart-button/add-to-cart-button';
 
 const CartItem = ({product}) => {
 
-  const {title, ingredients, price} = product;
+  const {title, ingredients, price, qty} = product;
 
   return (
     <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -16,7 +16,7 @@ const CartItem = ({product}) => {
         <AddToCartButton product={product} />
       </div>
 
-      <span className="text-muted">{price}</span>
+      <span className="text-muted">{price * qty}</span>
     </li>
   );
 };

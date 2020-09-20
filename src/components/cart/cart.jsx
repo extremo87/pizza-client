@@ -2,17 +2,23 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getCart} from "../../reducers/cart/selectors";
+import {getFullCurrency, getCurrency, getDeliveryFee} from "../../reducers/data/selectors";
 import {getTotalCart, getCartItemsCount} from '../../utils/utils';
 import CartItem from '../cart-item/cart-item';
-import {DELIVERY_FEE} from '../../config/config';
+import Spinner from '../spinner/spinner';
 
 
 class Cart extends React.PureComponent {
 
   render() {
-    const {cart} = this.props;
+    const {cart, currency, fullCurrency, deliveryFee} = this.props;
     const totalCount = getCartItemsCount(cart);
     const totalSum = getTotalCart(cart);
+    const total = totalSum + deliveryFee;
+
+    if (!fullCurrency) {
+      return <Spinner />;
+    }
 
     return (
       <div>
@@ -27,11 +33,11 @@ class Cart extends React.PureComponent {
             <div className="text-success">
               <h6 className="my-0">Delivery fee</h6>
             </div>
-            <span className="text-success">${DELIVERY_FEE.toFixed(2)}</span>
+            <span className="text-success">{fullCurrency.symbol}{deliveryFee.toFixed(2)}</span>
           </li>
           <li className="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>{totalSum.toFixed(2)}</strong>
+            <span>Total ({currency})</span>
+            <strong>{fullCurrency.symbol}{total.toFixed(2)} </strong>
           </li>
         </ul>
         <hr className="mb-4" />
@@ -43,13 +49,19 @@ class Cart extends React.PureComponent {
   }
 }
 
-Cart.propTypes = {
-  cart: PropTypes.object.isRequired
 
+Cart.propTypes = {
+  cart: PropTypes.object.isRequired,
+  fullCurrency: PropTypes.object,
+  currency: PropTypes.string.isRequired,
+  deliveryFee: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   cart: getCart(state),
+  deliveryFee: getDeliveryFee(state),
+  fullCurrency: getFullCurrency(state),
+  currency: getCurrency(state)
 });
 
 

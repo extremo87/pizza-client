@@ -1,17 +1,21 @@
-import {recalculateProducts, recalculateCart} from '../../utils/utils';
+import {recalculateProducts, convertCurrency} from '../../utils/utils';
 import {ActionCreator as CartAcrionCreator} from '../cart/cart';
+import {DELIVERY_FEE} from '../../config/config';
+
 
 export const ActionType = {
   SET_PRODUCTS: `SET_PRODUCTS`,
   SET_CURRENCIES: `SET_CURRENCIES`,
-  SET_CURRENCY: `SET_CURRENCY`
+  SET_CURRENCY: `SET_CURRENCY`,
+  SET_DELIVERY_FEE: `SET_DELIVERY_FEE`
 };
 
 const initialState = {
   products: [],
   currencies: {},
   currentProduct: null,
-  currency: `USD`
+  currency: `USD`,
+  deliveryFee: DELIVERY_FEE
 };
 
 const ActionCreator = {
@@ -35,6 +39,12 @@ const ActionCreator = {
       payload: currency
     };
   },
+  setDeliveryFee: (value) => {
+    return {
+      type: ActionType.SET_DELIVERY_FEE,
+      payload: value
+    };
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -44,6 +54,10 @@ const reducer = (state = initialState, action) => {
     
     case ActionType.SET_CURRENCIES:
         return {...state, currencies: action.payload};
+
+    case ActionType.SET_DELIVERY_FEE:
+        const newDeliveryFee = convertCurrency(state.deliveryFee, action.payload);
+        return {...state, deliveryFee: newDeliveryFee};
 
     case ActionType.SET_CURRENCY:
 
