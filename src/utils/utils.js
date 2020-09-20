@@ -40,3 +40,10 @@ export const isValidPhone = (value) => {
   return regExp.test(value);
 };
 
+export const prepareOrderData = (state, cart, currency, deliveryFee) => {
+  state.deliveryFee = deliveryFee;
+  state.currency = currency;
+
+  return Object.assign({}, state, {cart});
+};
+

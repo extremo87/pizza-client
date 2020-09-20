@@ -1,6 +1,7 @@
 const NameSpace = {
   DATA: `DATA`,
-  CART: `CART`
+  CART: `CART`,
+  SERVICE: `SERVICE`
 };
 
 export default NameSpace;

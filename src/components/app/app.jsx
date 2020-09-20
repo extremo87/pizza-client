@@ -26,6 +26,7 @@ class App extends React.PureComponent {
 
     return (
       <Router history={history}>
+        {this.props.children}
         <Switch>
           <Route exact path="/">
             <Page>
@@ -54,6 +55,7 @@ class App extends React.PureComponent {
 App.propTypes = {
   loadProducts: PropTypes.func.isRequired,
   loadCurrencies: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({

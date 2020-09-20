@@ -6,12 +6,14 @@ export const ActionType = {
   INCREMENT_PRODUCT: `INCREMENT_PRODUCT`,
   DECREMENT_PRODUCT: `DECREMENT_PRODUCT`,
   REPLACE_CART: `REPLACE_CART`,
+  SET_ORDERS: `SET_ORDERS`,
 
 };
 
 const initialState = {
   cart: {},
-  total: 0
+  total: 0,
+  orders: []
 };
 
 const ActionCreator = {
@@ -40,6 +42,13 @@ const ActionCreator = {
     return {
       type: ActionType.REPLACE_CART,
       payload: rate
+    };
+  },
+
+  setOrders: (order) => {
+    return {
+      type: ActionType.SET_ORDERS,
+      payload: order
     };
   },
 };
@@ -91,11 +100,31 @@ const reducer = (state = initialState, action) => {
           cart: updatedCart,
           total: getTotalCart(updatedCart)
         });
+
+
+    case ActionType.SET_ORDERS:
+      const orders = {...state.orders};
+      orders.push(action.payload)
+      return {...state, orders}
+
     default:
       return state;
   }
 };
 
+const Operation = {
+
+  makeOrder: (data) => (dispatch, getState, api) => {
+    return api.post(`/orders`, data)
+      .then((res) => {
+        dispatch(ActionCreator.setOrders(res.data));
+      }).catch((error) => {
+       console.log(error);
+      });
+  },
+
+};
 
 
-export {reducer, ActionCreator};
+
+export {reducer, ActionCreator, Operation};

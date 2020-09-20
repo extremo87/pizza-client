@@ -8,8 +8,9 @@ import {getCart} from "../../reducers/cart/selectors";
 import Spinner from '../spinner/spinner';
 import CartItemLight from '../cart-item-ligth/cart-item-ligth';
 import {isValidPhone} from '../../utils/utils';
-import {getTotalCart, getCartItemsCount} from '../../utils/utils';
+import {getTotalCart, getCartItemsCount, prepareOrderData} from '../../utils/utils';
 import history from '../../history';
+import {Operation} from '../../reducers/cart/cart';
 
 
 class Checkout extends React.PureComponent {
@@ -26,6 +27,7 @@ class Checkout extends React.PureComponent {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleMakeOrder = this.handleMakeOrder.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
   }
 
@@ -34,6 +36,14 @@ class Checkout extends React.PureComponent {
       history.push(`/`);
     }
   }
+
+
+  handleMakeOrder(evt) {
+    evt.preventDefault();
+    const {cart, currency, deliveryFee, makeOrder} = this.props;
+    makeOrder(prepareOrderData(this.state, cart, currency, deliveryFee));
+  }
+
 
   handleChange(field, evt) {
     this.setState({[field]: evt.target.value});
@@ -173,7 +183,7 @@ class Checkout extends React.PureComponent {
               </div>
             </div>
             <hr className="mb-4" />
-            <button className={`btn btn-primary btn-lg btn-block`} type="submit" disabled={!formIsValid}>Order</button>
+            <button className={`btn btn-primary btn-lg btn-block`} type="submit" onClick={this.handleMakeOrder} disabled={!formIsValid}>Order</button>
           </form>
         </div>
 
@@ -188,7 +198,9 @@ Checkout.propTypes = {
   fullCurrency: PropTypes.object,
   currency: PropTypes.string.isRequired,
   deliveryFee: PropTypes.number.isRequired,
+  makeOrder: PropTypes.func.isRequired,
 };
+
 
 const mapStateToProps = (state) => ({
   cart: getCart(state),
@@ -197,8 +209,16 @@ const mapStateToProps = (state) => ({
   currency: getCurrency(state)
 });
 
+const mapDispatchToProps = (dispatch) => ({
+
+  makeOrder(order) {
+    dispatch(Operation.makeOrder(order));
+  },
+
+});
+
 
 export {Checkout};
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
 
 
