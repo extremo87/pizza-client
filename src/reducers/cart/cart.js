@@ -11,7 +11,6 @@ export const ActionType = {
 
 const initialState = {
   cart: {},
-  currency: `USD`,
   total: 0
 };
 
