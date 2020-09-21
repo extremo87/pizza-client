@@ -16,3 +16,6 @@ coverage/
 public/bundle.js
 public/bundle.js.map
 
+# ENV files
+.env
+

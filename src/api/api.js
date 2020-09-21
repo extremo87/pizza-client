@@ -1,14 +1,14 @@
 import axios from 'axios';
 
+
 const ServerResponseCode = {
   UNAUTHORIZED: 401,
   VALIDATION: 422
 };
 
-
 export const createAPI = (onError) => {
   const api = axios.create({
-    baseURL: `http://pizza-server.test/api`,
+    baseURL: process.env.API_URL,
     timeout: 5000
   });
 
