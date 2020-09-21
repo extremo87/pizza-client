@@ -1,12 +1,14 @@
 {
   "name": "pizza-delivery-for-innoscripta",
+  "homepage": ".",
   "version": "1.0.0",
   "description": "the pizza task",
   "main": "index.js",
   "scripts": {
     "eslint": "eslint --ext .jsx --ext .js src/",
-    "start": "webpack-dev-server",
-    "test": "npm run eslint"
+    "start": "webpack-dev-server --host 0.0.0.0",
+    "test": "npm run eslint",
+    "build": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",
