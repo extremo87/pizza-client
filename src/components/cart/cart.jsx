@@ -1,13 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {getCart} from "../../reducers/cart/selectors";
 import {getFullCurrency, getCurrency, getDeliveryFee} from "../../reducers/data/selectors";
 import {getTotalCart, getCartItemsCount} from '../../utils/utils';
 import CartItem from '../cart-item/cart-item';
 import Spinner from '../spinner/spinner';
+import {Link} from 'react-router-dom';
+import RoutePath from '../../config/routes';
 
 
 class Cart extends React.PureComponent {
@@ -44,7 +45,7 @@ class Cart extends React.PureComponent {
           </li>
         </ul>
         <hr className="mb-4" />
-        <Link to={`/checkout`} className={`btn btn-primary btn-lg btn-block${isCartEmpty ? ` disabled` : ``}`} type="submit">Continue to checkout</Link>
+        <Link to={RoutePath.CHECKOUT} className={`btn btn-primary btn-lg btn-block${isCartEmpty ? ` disabled` : ``}`} type="submit">Continue to checkout</Link>
 
       </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ProductType} from '../../types/types';
 
-const CartItem = ({product}) => {
+const CartItemLight = ({product}) => {
 
   const {title, ingredients, price, qty} = product;
 
@@ -17,8 +17,8 @@ const CartItem = ({product}) => {
   );
 };
 
-CartItem.propTypes = {
+CartItemLight.propTypes = {
   product: ProductType
 };
 
-export default CartItem;
+export default CartItemLight;

@@ -11,6 +11,7 @@ import {isValidPhone} from '../../utils/utils';
 import {getTotalCart, getCartItemsCount, prepareOrderData} from '../../utils/utils';
 import history from '../../history';
 import {Operation} from '../../reducers/cart/cart';
+import RoutePath from '../../config/routes';
 
 
 class Checkout extends React.PureComponent {
@@ -33,7 +34,7 @@ class Checkout extends React.PureComponent {
 
   componentDidMount() {
     if (isEmpty(this.props.cart)) {
-      history.push(`/`);
+      history.push(RoutePath.MAINPAGE);
     }
   }
 

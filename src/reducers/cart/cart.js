@@ -1,4 +1,5 @@
 import {getTotalCart, recalculateCart} from '../../utils/utils';
+import history from '../../history'
 
 export const ActionType = {
   ADD_TO_CART: `ADD_TO_CART`,
@@ -6,6 +7,7 @@ export const ActionType = {
   INCREMENT_PRODUCT: `INCREMENT_PRODUCT`,
   DECREMENT_PRODUCT: `DECREMENT_PRODUCT`,
   REPLACE_CART: `REPLACE_CART`,
+  CLEAR_CART: `CLEAR_CART`,
   SET_ORDERS: `SET_ORDERS`,
 
 };
@@ -49,6 +51,13 @@ const ActionCreator = {
     return {
       type: ActionType.SET_ORDERS,
       payload: order
+    };
+  },
+
+  clearCart: () => {
+    return {
+      type: ActionType.CLEAR_CART,
+      payload: {}
     };
   },
 };
@@ -103,9 +112,17 @@ const reducer = (state = initialState, action) => {
 
 
     case ActionType.SET_ORDERS:
-      const orders = {...state.orders};
-      orders.push(action.payload)
-      return {...state, orders}
+      const orders = [...state.orders];
+
+      const order = action.payload.data;
+
+      orders.push(order);
+
+      return {...state, orders};
+
+    case ActionType.CLEAR_CART:
+      return {...state, cart: {}};
+      
 
     default:
       return state;
@@ -118,6 +135,8 @@ const Operation = {
     return api.post(`/orders`, data)
       .then((res) => {
         dispatch(ActionCreator.setOrders(res.data));
+        dispatch(ActionCreator.clearCart());
+        history.push(`success/${res.data.data.id}`);
       }).catch((error) => {
        console.log(error);
       });

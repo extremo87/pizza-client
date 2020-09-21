@@ -4,13 +4,14 @@ import Main from '../main/main';
 import SuccessPage from '../success-page/success-page';
 import Checkout from '../checkout/checkout';
 import Cart from '../cart/cart';
+import Product from '../product/product';
 import Page from '../page/page';
 import history from '../../history';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import RoutePath from '../../config/routes';
 
 import {Operation as DataOperation} from '../../reducers/data/data';
-
 
 class App extends React.PureComponent {
 
@@ -29,25 +30,31 @@ class App extends React.PureComponent {
       <Router history={history}>
         {this.props.children}
         <Switch>
-          <Route exact path="/">
+          <Route exact path={RoutePath.MAINPAGE}>
             <Page>
               <Main />
             </Page>
           </Route>
 
-          <Route exact path="/cart">
+          <Route exact path={RoutePath.CART}>
             <Page>
               <Cart />
             </Page>
           </Route>
 
-          <Route exact path="/checkout">
+          <Route exact path={RoutePath.CHECKOUT}>
             <Page>
               <Checkout />
             </Page>
           </Route>
 
-          <Route exact path="/success/:id">
+          <Route exact path={RoutePath.PRODUCT}>
+            <Page>
+              <Product />
+            </Page>
+          </Route>
+
+          <Route exact path={RoutePath.SUCCESS_PAGE}>
             <Page>
               <SuccessPage />
             </Page>
