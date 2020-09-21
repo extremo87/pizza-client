@@ -52,7 +52,7 @@ class Product extends React.PureComponent {
             <hr/>
             <div className="row">
               <div className="col-md-3">
-                <h3 className="text-center">{price}$</h3>
+                <h3 className="text-center">{currencySymbol}{price}</h3>
               </div>
               <AddToCartButton product={product}/>
             </div>
