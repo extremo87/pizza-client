@@ -1,10 +1,12 @@
 const initialState = {
   error: null,
+  isOrderLoading: false
 };
 
 const ActionType = {
   SET_ERROR: `SET_ERROR`,
   CLEAR_ERROR: `CLEAR_ERROR`,
+  SET_ORDER_LOADING: `SET_ORDER_LOADING`,
 };
 
 const ActionCreator = {
@@ -20,6 +22,13 @@ const ActionCreator = {
       type: ActionType.CLEAR_ERROR,
     };
   },
+
+  setOrderLoading: (status) => {
+    return {
+      type: ActionType.SET_ORDER_LOADING,
+      payload: status,
+    };
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +41,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.CLEAR_ERROR:
       return Object.assign({}, state, {
         error: null,
+      });
+
+    case ActionType.SET_ORDER_LOADING:
+      return Object.assign({}, state, {
+        isOrderLoading: action.payload,
       });
   }
 

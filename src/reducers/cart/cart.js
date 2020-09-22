@@ -1,4 +1,5 @@
 import {getTotalCart, recalculateCart} from '../../utils/utils';
+import {ActionCreator as ServiceActions} from '../service/service';
 import history from '../../history'
 
 export const ActionType = {
@@ -132,12 +133,15 @@ const reducer = (state = initialState, action) => {
 const Operation = {
 
   makeOrder: (data) => (dispatch, getState, api) => {
+    dispatch(ServiceActions.setOrderLoading(true));
     return api.post(`/orders`, data)
       .then((res) => {
         dispatch(ActionCreator.setOrders(res.data));
         dispatch(ActionCreator.clearCart());
+        dispatch(ServiceActions.setOrderLoading(false));
         history.push(`success/${res.data.data.id}`);
       }).catch((error) => {
+      dispatch(ServiceActions.setOrderLoading(false));
        console.log(error);
       });
   },

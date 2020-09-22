@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 import {getFullCurrency, getCurrency, getDeliveryFee} from "../../reducers/data/selectors";
 import {getCart} from "../../reducers/cart/selectors";
+import {getOrderLoadingStatus} from "../../reducers/service/selectors";
 import Spinner from '../spinner/spinner';
 import CartItemLight from '../cart-item-ligth/cart-item-ligth';
 import {isValidPhone} from '../../utils/utils';
@@ -13,6 +14,14 @@ import history from '../../history';
 import {Operation} from '../../reducers/cart/cart';
 import RoutePath from '../../config/routes';
 
+const LoadingButton = () => {
+  return (
+    <button className="btn btn-primary btn-lg btn-block" type="button" disabled={true}>
+      <span className="spinner-border spinner-border-sm" role="status"></span>
+      <span> Loading... </span>
+    </button>
+  );
+};
 
 class Checkout extends React.PureComponent {
 
@@ -97,7 +106,7 @@ class Checkout extends React.PureComponent {
     const {firstName, lastName, address, phone} = this.state;
     const formIsValid = this.handleValidation();
 
-    const {fullCurrency, deliveryFee, cart, currency} = this.props;
+    const {fullCurrency, deliveryFee, cart, currency, isOrderLoading} = this.props;
     const totalCount = getCartItemsCount(cart);
     const totalSum = getTotalCart(cart);
     const total = totalSum + deliveryFee;
@@ -105,6 +114,14 @@ class Checkout extends React.PureComponent {
     if (!fullCurrency) {
       return <Spinner />;
     }
+
+    const CheckoutButton = () => {
+      return (
+        <button className="btn btn-primary btn-lg btn-block" type="submit" onClick={this.handleMakeOrder} disabled={!formIsValid}>
+        Order
+        </button>
+      );
+    };
 
     return (
       <div className="row">
@@ -184,7 +201,7 @@ class Checkout extends React.PureComponent {
               </div>
             </div>
             <hr className="mb-4" />
-            <button className={`btn btn-primary btn-lg btn-block`} type="submit" onClick={this.handleMakeOrder} disabled={!formIsValid}>Order</button>
+            { isOrderLoading ? <LoadingButton /> : <CheckoutButton />}
           </form>
         </div>
 
@@ -200,6 +217,7 @@ Checkout.propTypes = {
   currency: PropTypes.string.isRequired,
   deliveryFee: PropTypes.number.isRequired,
   makeOrder: PropTypes.func.isRequired,
+  isOrderLoading: PropTypes.bool.isRequired
 };
 
 
@@ -207,7 +225,8 @@ const mapStateToProps = (state) => ({
   cart: getCart(state),
   deliveryFee: getDeliveryFee(state),
   fullCurrency: getFullCurrency(state),
-  currency: getCurrency(state)
+  currency: getCurrency(state),
+  isOrderLoading: getOrderLoadingStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
