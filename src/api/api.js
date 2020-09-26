@@ -3,7 +3,8 @@ import axios from 'axios';
 
 const ServerResponseCode = {
   UNAUTHORIZED: 401,
-  VALIDATION: 422
+  VALIDATION: 422,
+  INVALID_CREDEMTIALS: 400,
 };
 
 export const createAPI = (onError) => {
@@ -18,17 +19,23 @@ export const createAPI = (onError) => {
 
   const onFail = (error) => {
     if (error.response) {
-      if (error.response.status === ServerResponseCode.VALIDATION) {
-        const errors = [];
+      const errors = [];
+      switch (error.response.status) {
+        case ServerResponseCode.VALIDATION:
+          Object.keys(error.response.data.errors).map((key) => {
+            errors.push(error.response.data.errors[key]);
+          });
 
-        Object.keys(error.response.data.errors).map((key) => {
-          errors.push(error.response.data.errors[key]);
-        });
+          onError(errors.join(`,`));
+          break;
 
-        onError(errors.join(`,`));
+        case ServerResponseCode.INVALID_CREDEMTIALS:
+        case ServerResponseCode.UNAUTHORIZED:
+          onError(error.response.data.message);
+          break;
 
-      } else {
-        onError(error.message);
+        default:
+          onError(error.message);
       }
     } else {
       onError(error.message);

@@ -77,8 +77,10 @@ const Operation = {
     }));
     return api.post(`/register`, data)
       .then((res) => {
-        dispatch(ActionCreator.setProperty({property: `registrationInProgress`, value: false}));     
-        history.push(RoutePath.LOGIN);
+        dispatch(ActionCreator.setProperty({property: `registrationInProgress`, value: false})); 
+        if (data.user) {
+          history.push(RoutePath.LOGIN);
+        }    
       }).catch((error) => {
         dispatch(ActionCreator.setProperty({property: `registrationInProgress`, value: false}));        
       });
@@ -119,6 +121,7 @@ const Operation = {
       });
   },
 };
+
 
 
 export {reducer, ActionCreator, Operation};
