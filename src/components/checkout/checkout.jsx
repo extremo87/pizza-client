@@ -4,6 +4,7 @@ import InputMask from 'react-input-mask';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 import {getFullCurrency, getCurrency, getDeliveryFee} from "../../reducers/data/selectors";
+import {getUser} from "../../reducers/user/selectors";
 import {getCart} from "../../reducers/cart/selectors";
 import {getOrderLoadingStatus} from "../../reducers/service/selectors";
 import Spinner from '../spinner/spinner';
@@ -13,6 +14,7 @@ import {getTotalCart, getCartItemsCount, prepareOrderData} from '../../utils/uti
 import history from '../../history';
 import {Operation} from '../../reducers/cart/cart';
 import RoutePath from '../../config/routes';
+import {UserType} from '../../types/types';
 
 const LoadingButton = () => {
   return (
@@ -44,6 +46,16 @@ class Checkout extends React.PureComponent {
   componentDidMount() {
     if (isEmpty(this.props.cart)) {
       history.push(RoutePath.MAINPAGE);
+    }
+
+    const user = this.props.user;
+
+    if (!isEmpty(user)) {
+      this.setState({
+        firstName: user.firstname,
+        lastName: user.lastname,
+        phone: user.phone
+      });
     }
   }
 
@@ -213,6 +225,7 @@ class Checkout extends React.PureComponent {
 
 Checkout.propTypes = {
   cart: PropTypes.object.isRequired,
+  user: UserType,
   fullCurrency: PropTypes.object,
   currency: PropTypes.string.isRequired,
   deliveryFee: PropTypes.number.isRequired,
@@ -222,6 +235,7 @@ Checkout.propTypes = {
 
 
 const mapStateToProps = (state) => ({
+  user: getUser(state),
   cart: getCart(state),
   deliveryFee: getDeliveryFee(state),
   fullCurrency: getFullCurrency(state),

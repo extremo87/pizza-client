@@ -4,5 +4,7 @@ export default {
   LOGIN: `/login`,
   CART: `/cart`,
   CHECKOUT: `/checkout`,
+  REGISTER: `/register`,
+  PROFILE: `/profile`,
   SUCCESS_PAGE: `/success/:id`,
 };

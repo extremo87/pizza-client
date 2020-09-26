@@ -13,23 +13,12 @@ class CurrencyDropdown extends React.PureComponent {
   constructor() {
     super();
 
-    this.state = {
-      isDropdownOpen: false
-    };
-
-    this.handleDropdown = this.handleDropdown.bind(this);
     this.handleChangeCurrency = this.handleChangeCurrency.bind(this);
-
-  }
-
-  handleDropdown(evt) {
-    evt.preventDefault();
-    this.setState({isDropdownOpen: !this.state.isDropdownOpen});
   }
 
   handleChangeCurrency(currency) {
     this.props.changeCurrency(currency);
-    this.setState({isDropdownOpen: false});
+    this.props.onSwitch();
   }
 
 
@@ -40,13 +29,14 @@ class CurrencyDropdown extends React.PureComponent {
     }
 
     const currenciesList = Object.keys(this.props.currencies).filter((item) => item !== this.props.currency);
+    const {isOpened, onSwitch} = this.props;
 
     return (
       <li className="nav-item dropdown">
-        <a onClick={this.handleDropdown} className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a onClick={onSwitch} className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {this.props.currencies[this.props.currency].symbol + this.props.currency}
         </a>
-        <div className={`dropdown-menu${this.state.isDropdownOpen ? ` show` : ``}`} aria-labelledby="navbarDropdownMenuLink">
+        <div className={`dropdown-menu${isOpened ? ` show` : ``}`} aria-labelledby="navbarDropdownMenuLink">
 
           {currenciesList.map((key) => {
             return (
@@ -65,7 +55,9 @@ class CurrencyDropdown extends React.PureComponent {
 CurrencyDropdown.propTypes = {
   currencies: PropTypes.object.isRequired,
   currency: PropTypes.string.isRequired,
-  changeCurrency: PropTypes.func.isRequired
+  changeCurrency: PropTypes.func.isRequired,
+  onSwitch: PropTypes.func.isRequired,
+  isOpened: PropTypes.bool.isRequired
 
 };
 

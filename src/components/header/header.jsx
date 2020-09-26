@@ -1,8 +1,13 @@
 import React from 'react';
 import CartButton from '../cart-button/cart-button';
 import CurrencyDropdown from '../currency-dropdown/currency-dropdown';
+import UserButton from '../user-button/user-button';
 import {Link} from 'react-router-dom';
 import RoutePath from '../../config/routes';
+import withSwitcher from '../../high-order-components/with-switcher';
+
+const CurrencyDropdownWrapped = withSwitcher(CurrencyDropdown);
+const UserButtonWrapped = withSwitcher(UserButton);
 
 const Header = () => {
   return (
@@ -11,14 +16,9 @@ const Header = () => {
 
       <nav className="navbar navbar-expand-lg navbar-light">
         <ul className="navbar-nav">
-          <CurrencyDropdown />
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-                Login
-            </a>
-          </li>
+          <UserButtonWrapped />
+          <CurrencyDropdownWrapped />
         </ul>
-
       </nav>
       <CartButton />
     </div>

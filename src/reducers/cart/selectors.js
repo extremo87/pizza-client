@@ -7,5 +7,3 @@ export const getCart = (state) => {
 export const getOrders = (state) => {
   return state[NameSpace.CART].orders;
 };
-
-
