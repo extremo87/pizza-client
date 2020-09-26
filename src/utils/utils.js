@@ -77,4 +77,9 @@ export const emailIsValid = (email) => {
   return re.test(String(email).toLowerCase());
 };
 
+export const getOrderItemsAsString = (items) => {
+  const titles = Object.keys(items).map((key) => items[key].title);
+  return titles.join(`, `);
+};
+
 

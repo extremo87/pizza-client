@@ -6,7 +6,7 @@ import history from '../../history';
 import {getOrders} from '../../reducers/cart/selectors';
 import RoutePath from '../../config/routes';
 
-class Main extends React.PureComponent {
+class SuccessPage extends React.PureComponent {
 
   constructor(props) {
     super(props);
@@ -43,7 +43,7 @@ class Main extends React.PureComponent {
   }
 }
 
-Main.propTypes = {
+SuccessPage.propTypes = {
   match: PropTypes.object,
   orders: PropTypes.array
 };
@@ -52,5 +52,5 @@ const mapStateToProps = (state) => ({
   orders: getOrders(state),
 });
 
-export {Main};
-export default withRouter(connect(mapStateToProps, null)(Main));
+export {SuccessPage};
+export default withRouter(connect(mapStateToProps, null)(SuccessPage));

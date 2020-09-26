@@ -5,6 +5,6 @@ export default {
   CART: `/cart`,
   CHECKOUT: `/checkout`,
   REGISTER: `/register`,
-  PROFILE: `/profile`,
+  ORDER_HISTORY: `/order-history`,
   SUCCESS_PAGE: `/success/:id`,
 };

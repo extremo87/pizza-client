@@ -13,6 +13,7 @@ import Product from '../product/product';
 import Page from '../page/page';
 import RegistrationForm from '../registration-form/registration-form';
 import LoginForm from '../login-form/login-form';
+import OrderHistory from '../order-history/order-history';
 
 import {Operation as DataOperation} from '../../reducers/data/data';
 
@@ -75,6 +76,11 @@ class App extends React.PureComponent {
             </Page>
           </Route>
 
+          <Route exact path={RoutePath.ORDER_HISTORY}>
+            <Page>
+              <OrderHistory />
+            </Page>
+          </Route>
 
         </Switch>
       </Router>

@@ -4,8 +4,8 @@ export const getUser = (state) => {
   return state[NameSpace.USER].user;
 };
 
-export const getOrders = (state) => {
-  return state[NameSpace.USER].orders;
+export const getUserOrders = (state) => {
+  return state[NameSpace.USER].userOrders;
 };
 
 export const getRegistrationInProgressFlag = (state) => {
@@ -15,3 +15,8 @@ export const getRegistrationInProgressFlag = (state) => {
 export const getLoggingInProgressFlag = (state) => {
   return state[NameSpace.USER].loggingInProgress;
 };
+
+export const getOrdersLoadingInProgressFlag = (state) => {
+  return state[NameSpace.USER].ordersLoadingInProgress;
+};
+

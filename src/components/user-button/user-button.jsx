@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getUser} from '../../reducers/user/selectors';
-import {UserType} from '../../types/types';
 import {Operation} from '../../reducers/user/user';
 import {Link} from 'react-router-dom';
 import RoutePath from '../../config/routes';
@@ -47,8 +46,8 @@ class UserButton extends React.PureComponent {
         </a>
         <div className={`dropdown-menu${isOpened ? ` show` : ``}`} aria-labelledby="navbarDropdownMenuLink">
 
-          <Link className="dropdown-item" href="#">Orders history</Link>
-          <Link className="dropdown-item" onClick={this.handleLogOut} href="#">Sign out</Link>
+          <Link to={RoutePath.ORDER_HISTORY} onClick={onSwitch} className="dropdown-item" href="#">Orders history</Link>
+          <a className="dropdown-item" onClick={this.handleLogOut} href="#">Sign out</a>
 
         </div>
       </li>
@@ -58,11 +57,16 @@ class UserButton extends React.PureComponent {
 
 }
 
+
+UserButton.defaultProps = {
+  user: {}
+};
+
 UserButton.propTypes = {
   onSwitch: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   isOpened: PropTypes.bool.isRequired,
-  user: UserType
+  user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({

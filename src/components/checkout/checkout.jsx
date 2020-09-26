@@ -14,16 +14,7 @@ import {getTotalCart, getCartItemsCount, prepareOrderData} from '../../utils/uti
 import history from '../../history';
 import {Operation} from '../../reducers/cart/cart';
 import RoutePath from '../../config/routes';
-import {UserType} from '../../types/types';
-
-const LoadingButton = () => {
-  return (
-    <button className="btn btn-primary btn-lg btn-block" type="button" disabled={true}>
-      <span className="spinner-border spinner-border-sm" role="status"></span>
-      <span> Loading... </span>
-    </button>
-  );
-};
+import LoadingButton from '../loading-button/loading-button';
 
 class Checkout extends React.PureComponent {
 
@@ -225,7 +216,7 @@ class Checkout extends React.PureComponent {
 
 Checkout.propTypes = {
   cart: PropTypes.object.isRequired,
-  user: UserType,
+  user: PropTypes.object.isRequired,
   fullCurrency: PropTypes.object,
   currency: PropTypes.string.isRequired,
   deliveryFee: PropTypes.number.isRequired,

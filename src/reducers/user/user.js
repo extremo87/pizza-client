@@ -1,10 +1,10 @@
 import history from '../../history';
 import RoutePath from '../../config/routes';
-import axios from 'axios';
 
 export const ActionType = {
   LOGOUT: `LOGOUT`,
   SET_USER: `SET_USER`,
+  SET_USER_ORDERS: `SET_USER_ORDERS`,
   SET_PROPERTY: `SET_PROPERTY`,
   SET_LOGGING_IN_PROCESS: `SET_LOGGING_IN_PROCESS`,
   SET_REGISTATION_IN_PROCESS: `SET_REGISTATION_IN_PROCESS`,
@@ -12,9 +12,10 @@ export const ActionType = {
 
 const initialState = {
   user: {},
-  orders: [],
+  userOrders: [],
   registrationInProgress: false,
-  loggingInProgress: false
+  loggingInProgress: false,
+  ordersLoadingInProgress: false
 };
 
 const ActionCreator = {
@@ -22,6 +23,13 @@ const ActionCreator = {
     return {
       type: ActionType.SET_USER,
       payload: user
+    };
+  },
+
+  setUserOrders: (orders) => {
+    return {
+      type: ActionType.SET_USER_ORDERS,
+      payload: orders
     };
   },
 
@@ -44,6 +52,9 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SET_USER:
       return {...state, user: action.payload};
+
+    case ActionType.SET_USER_ORDERS:
+        return {...state, userOrders: action.payload};
 
     case ActionType.LOGOUT:
       return {...state, ...initialState};
@@ -97,8 +108,17 @@ const Operation = {
       localStorage.removeItem(`token`);
       history.push(RoutePath.MAINPAGE);
   },
-};
 
+  orders: (data) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.setProperty({property: `ordersLoadingInProgress`, value: true}));     
+    return api.get(`/orders`, data)
+      .then((res) => {
+        dispatch(ActionCreator.setUserOrders(res.data.data));
+        dispatch(ActionCreator.setProperty({property: `ordersLoadingInProgress`, value: false}));     
+
+      });
+  },
+};
 
 
 export {reducer, ActionCreator, Operation};
