@@ -4,6 +4,7 @@ import history from '../../history';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import RoutePath from '../../config/routes';
+import PrivateRoute from '../private-route/private-route';
 
 import Main from '../main/main';
 import SuccessPage from '../success-page/success-page';
@@ -76,11 +77,16 @@ class App extends React.PureComponent {
             </Page>
           </Route>
 
-          <Route exact path={RoutePath.ORDER_HISTORY}>
-            <Page>
-              <OrderHistory />
-            </Page>
-          </Route>
+
+          <PrivateRoute exact path={RoutePath.ORDER_HISTORY}
+            render={() => {
+              return (
+                <Page>
+                  <OrderHistory />
+                </Page>
+              );
+            }}
+          />
 
         </Switch>
       </Router>

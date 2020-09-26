@@ -78,7 +78,7 @@ const Operation = {
     return api.post(`/register`, data)
       .then((res) => {
         dispatch(ActionCreator.setProperty({property: `registrationInProgress`, value: false})); 
-        if (data.user) {
+        if (res.data.user) {
           history.push(RoutePath.LOGIN);
         }    
       }).catch((error) => {
