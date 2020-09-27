@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Router} from "react-router-dom";
+import {Switch, Route, Router, Redirect} from "react-router-dom";
 import history from '../../history';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -71,11 +71,16 @@ class App extends React.PureComponent {
             </Page>
           </Route>
 
-          <Route exact path={RoutePath.LOGIN}>
-            <Page>
-              <LoginForm />
-            </Page>
-          </Route>
+
+          <Route exact path={RoutePath.LOGIN}
+            render={() => {
+              return ((localStorage.getItem(`token`))
+                ? <Redirect to={RoutePath.MAINPAGE} />
+                :  <Page>
+                <LoginForm />
+              </Page>);
+            }}
+          />
 
 
           <PrivateRoute exact path={RoutePath.ORDER_HISTORY}
