@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add to cart button conponent renders correctly 1`] = `
+<div
+  className="btn-group"
+>
+  <button
+    className="btn btn-sm btn-outline-secondary"
+    onClick={[Function]}
+    type="button"
+  >
+    Add to cart
+  </button>
+</div>
+`;

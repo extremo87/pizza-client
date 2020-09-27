@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product card conponent renders correctly 1`] = `
+<div
+  className="col-md-4"
+>
+  <div
+    className="card mb-4 shadow-sm"
+  >
+    <img
+      className="card-img-top"
+      src="https://static.nnc.kz/pizza1.jpg"
+    />
+    <div
+      className="card-body"
+    >
+      <h5
+        className="card-title"
+      >
+        <a
+          className="text-success"
+          href="/product/1"
+          onClick={[Function]}
+        >
+          MARGHERITA
+        </a>
+      </h5>
+      <p
+        className="card-text"
+      >
+        Tomatoes, mozzarella, ricotta, bacon, onion
+      </p>
+      <div
+        className="d-flex justify-content-between align-items-center"
+      >
+        <div
+          className="btn-group"
+        >
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={[Function]}
+            type="button"
+          >
+            Add to cart
+          </button>
+        </div>
+        <p>
+          <b>
+            $
+            18
+          </b>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

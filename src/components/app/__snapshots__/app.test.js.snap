@@ -1,0 +1,525 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App conponent renders correctly 1`] = `
+Array [
+  <h1>
+    Test
+  </h1>,
+  <div
+    className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top"
+  >
+    <h5
+      className="my-0 mr-md-auto font-weight-normal"
+    >
+      <a
+        className="navbar-brand mr-0 mr-md-2 text-dark"
+        href="/"
+        onClick={[Function]}
+      >
+        Your Pizza
+      </a>
+    </h5>
+    <nav
+      className="navbar navbar-expand-lg navbar-light"
+    >
+      <ul
+        className="navbar-nav"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/login"
+            onClick={[Function]}
+          >
+            Sign In
+          </a>
+        </li>
+        <li
+          className="nav-item dropdown"
+        >
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            className="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            id="navbarDropdownMenuLink"
+            onClick={[Function]}
+            role="button"
+          >
+            €EUR
+          </a>
+          <div
+            aria-labelledby="navbarDropdownMenuLink"
+            className="dropdown-menu"
+          >
+            <a
+              className="dropdown-item"
+              href="#"
+              onClick={[Function]}
+            >
+              $USD
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <a
+      className="btn btn-outline-primary"
+    >
+      <svg
+        className="bi bi-cart"
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 16 16"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+          fillRule="evenodd"
+        />
+      </svg>
+    </a>
+  </div>,
+  <div
+    className="container"
+    style={
+      Object {
+        "marginTop": "10%",
+      }
+    }
+  >
+    <div
+      className="card-deck mb-4 text-center"
+    >
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza1.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/1"
+                onClick={[Function]}
+              >
+                MARGHERITA
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Tomatoes, mozzarella, ricotta, bacon, onion
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  18
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza2.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/2"
+                onClick={[Function]}
+              >
+                QUATTRO FROMAGGI
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Gorgonzola, ricotta, mozzarella, taleggio
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  24
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza3.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/3"
+                onClick={[Function]}
+              >
+                SALMONE E PESTO DI NOCI
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Salmon, walnut pesto, onion, garlic sauce
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  26
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza4.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/4"
+                onClick={[Function]}
+              >
+                POMODORI PANCETTA
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Tomatoes, bacon, onion, garlic sauce
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  22
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza1.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/5"
+                onClick={[Function]}
+              >
+                CHEESY GARLIC PIZZA
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Mozzarella, & garlic sauce on a crème fraiche base, ect
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  28
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza2.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/6"
+                onClick={[Function]}
+              >
+                CHEESY GARLIC BRUSCHETTA
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Lots of pepperoni & mozzarella, garlic sauce
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  17
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza3.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/7"
+                onClick={[Function]}
+              >
+                GRAND SUPREME
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Baby spinach, smoked leg ham, olives, mozzarella, ect
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  15
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div
+          className="card mb-4 shadow-sm"
+        >
+          <img
+            className="card-img-top"
+            src="https://static.nnc.kz/pizza4.jpg"
+          />
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              <a
+                className="text-success"
+                href="/product/8"
+                onClick={[Function]}
+              >
+                PACHINO PICCANTE
+              </a>
+            </h5>
+            <p
+              className="card-text"
+            >
+              Marinated cherry tomatoes, garlic sauce
+            </p>
+            <div
+              className="d-flex justify-content-between align-items-center"
+            >
+              <div
+                className="btn-group"
+              >
+                <button
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add to cart
+                </button>
+              </div>
+              <p>
+                <b>
+                  €
+                  15
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
