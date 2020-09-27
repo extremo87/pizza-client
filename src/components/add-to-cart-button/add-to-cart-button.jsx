@@ -45,13 +45,13 @@ class AddToCartButton extends React.PureComponent {
         <div className="col-mb-2">
           <div className="input-group">
             <div className="input-group-prepend">
-              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={this.handleIncrement}>+</button>
+              <button type="button" className="btn btn-sm btn-outline-secondary increment" onClick={this.handleIncrement}>+</button>
             </div>
             <div className="custom-file" style={{width: `40px`}}>
               <input type="text" className="form-control" value={cartProduct.qty} readOnly/>
             </div>
             <div className="input-group-append">
-              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={this.handleDecrement}>-</button>
+              <button type="button" className="btn btn-sm btn-outline-secondary decrement" onClick={this.handleDecrement}>-</button>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ class AddToCartButton extends React.PureComponent {
 
     return (
       <div className="btn-group">
-        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={this.handleAddToCart}>
+        <button type="button" className="btn btn-sm btn-outline-secondary add-to-cart" onClick={this.handleAddToCart}>
                 Add to cart
         </button>
       </div>

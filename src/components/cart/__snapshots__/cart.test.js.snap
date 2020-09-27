@@ -52,7 +52,7 @@ exports[`Cart conponent renders correctly 1`] = `
               className="input-group-prepend"
             >
               <button
-                className="btn btn-sm btn-outline-secondary"
+                className="btn btn-sm btn-outline-secondary increment"
                 onClick={[Function]}
                 type="button"
               >
@@ -78,7 +78,7 @@ exports[`Cart conponent renders correctly 1`] = `
               className="input-group-append"
             >
               <button
-                className="btn btn-sm btn-outline-secondary"
+                className="btn btn-sm btn-outline-secondary decrement"
                 onClick={[Function]}
                 type="button"
               >
@@ -127,7 +127,7 @@ exports[`Cart conponent renders correctly 1`] = `
               className="input-group-prepend"
             >
               <button
-                className="btn btn-sm btn-outline-secondary"
+                className="btn btn-sm btn-outline-secondary increment"
                 onClick={[Function]}
                 type="button"
               >
@@ -153,7 +153,7 @@ exports[`Cart conponent renders correctly 1`] = `
               className="input-group-append"
             >
               <button
-                className="btn btn-sm btn-outline-secondary"
+                className="btn btn-sm btn-outline-secondary decrement"
                 onClick={[Function]}
                 type="button"
               >

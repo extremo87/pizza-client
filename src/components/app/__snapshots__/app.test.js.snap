@@ -131,7 +131,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
@@ -184,7 +184,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
@@ -237,7 +237,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
@@ -290,7 +290,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
@@ -343,7 +343,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
@@ -396,7 +396,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
@@ -449,7 +449,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
@@ -502,7 +502,7 @@ Array [
                 className="btn-group"
               >
                 <button
-                  className="btn btn-sm btn-outline-secondary"
+                  className="btn btn-sm btn-outline-secondary add-to-cart"
                   onClick={[Function]}
                   type="button"
                 >
